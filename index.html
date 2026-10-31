@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10080d">
+<title>365 Days of Us ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap');
+
+:root {
+  --bg:#10080d;
+  --card:#1d1018;
+  --pink:#ff779c;
+  --red:#d82f60;
+  --text:#fff0f4;
+  --muted:#bda6af;
+}
+
+* {box-sizing:border-box;margin:0;padding:0}
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+html {scroll-behavior:smooth}
+
+.ambient {
+  position:fixed;
+  width:280px;height:280px;
+  border-radius:50%;
+  filter:blur(110px);
+  opacity:.15;
+  pointer-events:none;
+  z-index:-1;
+}
+.a1 {background:#fa245d;top:5%;left:-120px}
+.a2 {background:#a51d78;bottom:5%;right:-120px}
+
+header {
+  padding:22px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ffffff12;
+}
+
+.logo {
+  color:var(--pink);
+  font-family:'Playfair Display',serif;
+  font-size:21px;
+}
+
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:17px;
+  font-size:12px;
+}
+
+nav a:hover {color:var(--pink)}
+
+.hero {
+  min-height:85vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 20px;
+  position:relative;
+}
+
+.hero-content {max-width:720px}
+
+.eyebrow {
+  color:var(--pink);
+  letter-spacing:4px;
+  font-size:11px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+
+h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(48px,10vw,88px);
+  line-height:1.12;
+  margin-bottom:20px;
+}
+
+h1 span {color:var(--pink);font-style:italic}
+
+.hero p {
+  color:var(--muted);
+  line-height:1.9;
+  max-width:500px;
+  margin:0 auto;
+}
+
+.heart {
+  font-size:42px;
+  margin-bottom:24px;
+  display:inline-block;
+  animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% {transform:scale(1)}
+  15% {transform:scale(1.2)}
+  30% {transform:scale(1)}
+  45% {transform:scale(1.15)}
+}
+
+.button {
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 27px;
+  border-radius:30px;
+  color:white;
+  text-decoration:none;
+  background:linear-gradient(120deg,#d82f60,#ff779c);
+  font-weight:600;
+  box-shadow:0 8px 35px #ff477c35;
+  transition:.3s;
+}
+
+.button:hover {transform:translateY(-4px)}
+
+section {
+  padding:85px 7%;
+  max-width:1000px;
+  margin:auto;
+}
+
+.section-title {
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.subtitle {
+  color:var(--muted);
+  text-align:center;
+  margin-bottom:38px;
+  font-size:14px;
+}
+
+.card {
+  background:linear-gradient(145deg,#26141e,#170e14);
+  border:1px solid #ffffff12;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 15px 45px #0003;
+}
+
+.counter {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.time-box {
+  background:#ffffff08;
+  padding:23px 8px;
+  border-radius:15px;
+  text-align:center;
+  border:1px solid #ffffff0c;
+}
+
+.time-box strong {
+  display:block;
+  font-size:clamp(25px,5vw,38px);
+  color:var(--pink);
+  font-family:'Playfair Display',serif;
+}
+
+.time-box small {
+  color:var(--muted);
+  font-size:11px;
+}
+
+.date-note {
+  text-align:center;
+  color:var(--muted);
+  margin-top:20px;
+  font-size:13px;
+}
+
+.letter {
+  font-family:'Playfair Display',serif;
+  font-size:17px;
+  line-height:2;
+  color:#f4dce5;
+}
+
+.letter p {margin-bottom:20px}
+
+.signature {
+  color:var(--pink);
+  font-style:italic;
+  font-size:22px;
+  margin-top:28px;
+}
+
+.wishes {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.wish {
+  background:var(--card);
+  border:1px solid #ffffff12;
+  padding:23px;
+  border-radius:18px;
+}
+
+.wish .emoji {font-size:26px;margin-bottom:12px}
+.wish h3 {color:var(--pink);margin-bottom:9px}
+.wish p {color:var(--muted);font-size:13px;line-height:1.8}
+
+.promise {
+  text-align:center;
+  padding:45px 25px;
+  border:1px solid #ff779c35;
+  border-radius:24px;
+  background:linear-gradient(135deg,#351323,#1b1018);
+}
+
+.promise h2 {
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  margin-bottom:18px;
+}
+
+.promise p {
+  color:#e9cbd7;
+  line-height:2;
+  max-width:600px;
+  margin:auto;
+}
+
+footer {
+  padding:45px 20px;
+  text-align:center;
+  border-top:1px solid #ffffff12;
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+}
+
+footer span {color:var(--pink)}
+
+.floating-heart {
+  position:fixed;
+  bottom:-30px;
+  color:#ff779c;
+  pointer-events:none;
+  animation:floatUp 7s linear forwards;
+  z-index:10;
+}
+
+@keyframes floatUp {
+  0% {transform:translateY(0) rotate(0);opacity:0}
+  15% {opacity:.7}
+  100% {transform:translateY(-110vh) rotate(35deg);opacity:0}
+}
+
+@media(max-width:600px) {
+  header {padding:18px 5%}
+  nav a {margin-left:9px;font-size:10px}
+  .counter {gap:7px}
+  .time-box {padding:17px 4px}
+  section {padding:65px 6%}
+  .wishes {grid-template-columns:1fr}
+  .card {padding:22px}
+  .letter {font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient a1"></div>
+<div class="ambient a2"></div>
+
+<header>
+  <div class="logo">♥ Our Little Universe</div>
+  <nav>
+    <a href="#time">Time</a>
+    <a href="#letter">Letter</a>
+    <a href="#wishes">Wishes</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="heart">❤️</div>
+    <div class="eyebrow">November 1, 2025 · 11:00 PM</div>
+    <h1>365 Days of <span>Us.</span></h1>
+    <p>
+      To my Baby, my Sweetie, my favorite troublemaker...
+      One year ago, something beautiful began.
+      And somehow, you're still my favorite notification.
+    </p>
+    <a href="#letter" class="button">Open your letter ♥</a>
+  </div>
+</div>
+
+<section id="time">
+  <h2 class="section-title">Look how far we've come</h2>
+  <p class="subtitle">Every second has been part of our story.</p>
+
+  <div class="card">
+    <div class="counter">
+      <div class="time-box">
+        <strong id="days">000</strong>
+        <small>Days</small>
+      </div>
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <small>Hours</small>
+      </div>
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <small>Minutes</small>
+      </div>
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <small>Seconds</small>
+      </div>
+    </div>
+    <div class="date-note">
+      Since November 1, 2025 · 11:00 PM
+    </div>
+  </div>
+</section>
+
+<section id="letter">
+  <h2 class="section-title">A letter for you</h2>
+  <p class="subtitle">Something I want you to remember, Baby.</p>
+
+  <div class="card letter">
+
+    <p>My dearest Melat, ❤️</p>
+
+    <p>
+      Happy first anniversary, Baby.
+      I honestly don't know where to begin.
+      One year sounds like just a number, but to me,
+      it carries countless conversations, laughter,
+      teasing, little arguments, silly moments,
+      and feelings that words sometimes struggle to explain.
+    </p>
+
+    <p>
+      You know what's funny?
+      You can be so naughty, so stubborn, and such a
+      professional troublemaker sometimes. 😂
+      Yet somehow, you're also the person whose
+      happiness matters so much to me.
+      You're smart, caring, lovely, and beautifully yourself.
+      I wouldn't trade that combination for anything.
+    </p>
+
+    <p>
+      My Sweetie, you have become such a special part
+      of my everyday life. Sometimes a simple conversation
+      with you can change my entire mood.
+      Sometimes I smile at my phone like an idiot.
+      And sometimes I just wish I could skip the distance
+      between us and be beside you.
+    </p>
+
+    <p>
+      You're my sweet painkiller.
+      Not because life never hurts, but because your
+      presence can make even a difficult day feel lighter.
+      I hope you always know how much your existence
+      means to me.
+    </p>
+
+    <p>
+      We haven't lived every dream we've talked about yet.
+      There are still hugs waiting, moments waiting,
+      adventures waiting, and memories we haven't made.
+      But I look forward to those days.
+    </p>
+
+    <p>
+      I don't promise that every day will be perfect.
+      I promise to keep learning, listening, caring,
+      laughing with you, and choosing us through
+      the imperfect days too.
+    </p>
+
+    <p>
+      Thank you for this first chapter, Melat.
+      Thank you for being my Baby, my Sweetie,
+      my favorite headache, and my sweet painkiller.
+    </p>
+
+    <p>
+      If I could go back to that night,
+      November 1, 2025, at 11:00 PM,
+      knowing everything I know today...
+      I'd still choose to begin this story with you.
+    </p>
+
+    <p>
+      Happy first anniversary, my love.
+      This is only our first chapter. ❤️
+    </p>
+
+    <div class="signature">
+      Forever your favorite troublemaker. ❤️
+    </div>
+
+  </div>
+</section>
+
+<section id="wishes">
+  <h2 class="section-title">For our next chapter</h2>
+  <p class="subtitle">A few things I wish for us.</p>
+
+  <div class="wishes">
+
+    <div class="wish">
+      <div class="emoji">🫂</div>
+      <h3>More togetherness</h3>
+      <p>
+        More real hugs, more moments beside each other,
+        and fewer goodbyes.
+      </p>
+    </div>
+
+    <div class="wish">
+      <div class="emoji">😂</div>
+      <h3>More laughter</h3>
+      <p>
+        More ridiculous jokes, endless teasing,
+        and reasons to smile like fools.
+      </p>
+    </div>
+
+    <div class="wish">
+      <div class="emoji">🤍</div>
+      <h3>More understanding</h3>
+      <p>
+        Patience when things get difficult,
+        honest conversations, and stronger trust.
+      </p>
+    </div>
+
+    <div class="wish">
+      <div class="emoji">🌙</div>
+      <h3>More dreams</h3>
+      <p>
+        New adventures, beautiful memories,
+        and a future we build together.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="promise">
+    <div class="heart">💗</div>
+    <h2>One year down.<br>Our story continues.</h2>
+    <p>
+      Dear Melat, if you ever wonder whether you matter
+      to me, come back to this page.
+      Remember that someone is grateful that
+      November 1, 2025 happened.
+    </p>
+    <br>
+    <p style="color:#ff9bb5;font-family:'Playfair Display',serif;font-size:21px">
+      I love our little universe, Baby.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Made with love, a little madness, and a lot of feelings.<br>
+  For <span>Melat Hussein</span> ♥<br>
+  <span>November 1, 2025 — Always & Beyond</span>
+</footer>
+
+<script>
+const start = new Date(2025, 10, 1, 23, 0, 0);
+
+function updateCounter() {
+  const now = new Date();
+  let diff = Math.max(0, now - start);
+
+  const days = Math.floor(diff / 86400000);
+  diff %= 86400000;
+
+  const hours = Math.floor(diff / 3600000);
+  diff %= 3600000;
+
+  const minutes = Math.floor(diff / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('days').textContent =
+    String(days).padStart(3, '0');
+
+  document.getElementById('hours').textContent =
+    String(hours).padStart(2, '0');
+
+  document.getElementById('minutes').textContent =
+    String(minutes).padStart(2, '0');
+
+  document.getElementById('seconds').textContent =
+    String(seconds).padStart(2, '0');
+}
+
+updateCounter();
+setInterval(updateCounter, 1000);
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'floating-heart';
+  heart.textContent = Math.random() > .5 ? '♥' : '♡';
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (12 + Math.random() * 17) + 'px';
+  heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 1100);
+</script>
+
+</body>
+</html>
