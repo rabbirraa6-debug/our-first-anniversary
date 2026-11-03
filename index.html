@@ -19,7 +19,13 @@
   --muted:#bda6af;
 }
 
-* {box-sizing:border-box;margin:0;padding:0}
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html {scroll-behavior:smooth}
 
 body {
   background:var(--bg);
@@ -28,17 +34,17 @@ body {
   overflow-x:hidden;
 }
 
-html {scroll-behavior:smooth}
-
 .ambient {
   position:fixed;
-  width:280px;height:280px;
+  width:280px;
+  height:280px;
   border-radius:50%;
   filter:blur(110px);
   opacity:.15;
   pointer-events:none;
   z-index:-1;
 }
+
 .a1 {background:#fa245d;top:5%;left:-120px}
 .a2 {background:#a51d78;bottom:5%;right:-120px}
 
@@ -115,6 +121,14 @@ h1 span {color:var(--pink);font-style:italic}
   45% {transform:scale(1.15)}
 }
 
+.hero-buttons {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:13px;
+  flex-wrap:wrap;
+}
+
 .button {
   display:inline-block;
   margin-top:30px;
@@ -126,9 +140,16 @@ h1 span {color:var(--pink);font-style:italic}
   font-weight:600;
   box-shadow:0 8px 35px #ff477c35;
   transition:.3s;
+  font-size:14px;
 }
 
 .button:hover {transform:translateY(-4px)}
+
+.button.secondary {
+  background:linear-gradient(120deg,#39213c,#713451);
+  border:1px solid #ff779c55;
+  box-shadow:0 8px 35px #ff477c15;
+}
 
 section {
   padding:85px 7%;
@@ -191,6 +212,8 @@ section {
   font-size:13px;
 }
 
+/* LETTER */
+
 .letter {
   font-family:'Playfair Display',serif;
   font-size:17px;
@@ -206,6 +229,89 @@ section {
   font-size:22px;
   margin-top:28px;
 }
+
+/* BIRTHDAYS */
+
+.birthday-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+
+.birthday-card {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#2b1422,#170e14);
+  border:1px solid #ff779c35;
+  border-radius:22px;
+  padding:28px 18px;
+  text-align:center;
+  box-shadow:0 15px 45px #0003;
+}
+
+.birthday-card.him {
+  border-color:#7baaff35;
+  background:linear-gradient(145deg,#17233c,#170e14);
+}
+
+.birthday-icon {
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.birthday-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.birthday-card.her h3,
+.birthday-card.her .birthday-time strong {
+  color:var(--pink);
+}
+
+.birthday-card.him h3,
+.birthday-card.him .birthday-time strong {
+  color:#91baff;
+}
+
+.birthday-date {
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:22px;
+}
+
+.birthday-time {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+}
+
+.birthday-time > div {
+  background:#ffffff08;
+  border-radius:10px;
+  padding:13px 2px;
+}
+
+.birthday-time strong {
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(19px,4vw,29px);
+}
+
+.birthday-time small {
+  color:var(--muted);
+  font-size:9px;
+}
+
+.birthday-status {
+  min-height:22px;
+  margin-top:19px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* WISHES */
 
 .wishes {
   display:grid;
@@ -223,6 +329,8 @@ section {
 .wish .emoji {font-size:26px;margin-bottom:12px}
 .wish h3 {color:var(--pink);margin-bottom:9px}
 .wish p {color:var(--muted);font-size:13px;line-height:1.8}
+
+/* PROMISE */
 
 .promise {
   text-align:center;
@@ -245,6 +353,8 @@ section {
   margin:auto;
 }
 
+/* FOOTER */
+
 footer {
   padding:45px 20px;
   text-align:center;
@@ -255,6 +365,8 @@ footer {
 }
 
 footer span {color:var(--pink)}
+
+/* FLOATING HEARTS */
 
 .floating-heart {
   position:fixed;
@@ -271,6 +383,8 @@ footer span {color:var(--pink)}
   100% {transform:translateY(-110vh) rotate(35deg);opacity:0}
 }
 
+/* MOBILE */
+
 @media(max-width:600px) {
   header {padding:18px 5%}
   nav a {margin-left:9px;font-size:10px}
@@ -278,8 +392,11 @@ footer span {color:var(--pink)}
   .time-box {padding:17px 4px}
   section {padding:65px 6%}
   .wishes {grid-template-columns:1fr}
+  .birthday-grid {grid-template-columns:1fr}
   .card {padding:22px}
   .letter {font-size:16px}
+  .hero-buttons {gap:5px}
+  .button {padding:13px 19px;font-size:13px}
 }
 </style>
 </head>
@@ -294,58 +411,97 @@ footer span {color:var(--pink)}
   <nav>
     <a href="#time">Time</a>
     <a href="#letter">Letter</a>
+    <a href="#birthdays">BD 🎂</a>
     <a href="#wishes">Wishes</a>
   </nav>
 </header>
 
 <main>
 
+<!-- HERO -->
+
 <div class="hero">
   <div class="hero-content">
+
     <div class="heart">❤️</div>
-    <div class="eyebrow">November 1, 2025 · 11:00 PM</div>
+
+    <div class="eyebrow">
+      November 1, 2025 · 11:00 PM
+    </div>
+
     <h1>365 Days of <span>Us.</span></h1>
+
     <p>
       To my Baby, my Sweetie, my favorite troublemaker...
       One year ago, something beautiful began.
       And somehow, you're still my favorite notification.
     </p>
-    <a href="#letter" class="button">Open your letter ♥</a>
+
+    <div class="hero-buttons">
+      <a href="#letter" class="button">
+        Open your letter ♥
+      </a>
+
+      <a href="#birthdays" class="button secondary">
+        🎂 Check BD
+      </a>
+    </div>
+
   </div>
 </div>
 
+<!-- ANNIVERSARY COUNTER -->
+
 <section id="time">
+
   <h2 class="section-title">Look how far we've come</h2>
-  <p class="subtitle">Every second has been part of our story.</p>
+
+  <p class="subtitle">
+    Every second has been part of our story.
+  </p>
 
   <div class="card">
+
     <div class="counter">
+
       <div class="time-box">
         <strong id="days">000</strong>
         <small>Days</small>
       </div>
+
       <div class="time-box">
         <strong id="hours">00</strong>
         <small>Hours</small>
       </div>
+
       <div class="time-box">
         <strong id="minutes">00</strong>
         <small>Minutes</small>
       </div>
+
       <div class="time-box">
         <strong id="seconds">00</strong>
         <small>Seconds</small>
       </div>
+
     </div>
+
     <div class="date-note">
       Since November 1, 2025 · 11:00 PM
     </div>
+
   </div>
 </section>
 
+<!-- LETTER -->
+
 <section id="letter">
+
   <h2 class="section-title">A letter for you</h2>
-  <p class="subtitle">Something I want you to remember, Baby.</p>
+
+  <p class="subtitle">
+    Something I want you to remember, Baby.
+  </p>
 
   <div class="card letter">
 
@@ -404,7 +560,7 @@ footer span {color:var(--pink)}
     <p>
       Thank you for this first chapter, Melat.
       Thank you for being my Baby, my Sweetie,
-      my Wife,my future baby mama, and my sweet painkiller.
+      my Wife, my future baby mama, and my sweet painkiller.
     </p>
 
     <p>
@@ -426,9 +582,115 @@ footer span {color:var(--pink)}
   </div>
 </section>
 
+<!-- BIRTHDAY COUNTDOWNS -->
+
+<section id="birthdays">
+
+  <h2 class="section-title">Two Special Days 🎂</h2>
+
+  <p class="subtitle">
+    Two birthdays, two reasons to celebrate our little universe.
+  </p>
+
+  <div class="birthday-grid">
+
+    <!-- HER -->
+
+    <div class="birthday-card her">
+
+      <div class="birthday-icon">🎀</div>
+
+      <h3>Her Birthday</h3>
+
+      <p class="birthday-date">
+        May 27 · Melat's Special Day 💗
+      </p>
+
+      <div class="birthday-time">
+
+        <div>
+          <strong id="her-days">000</strong>
+          <small>Days</small>
+        </div>
+
+        <div>
+          <strong id="her-hours">00</strong>
+          <small>Hours</small>
+        </div>
+
+        <div>
+          <strong id="her-minutes">00</strong>
+          <small>Minutes</small>
+        </div>
+
+        <div>
+          <strong id="her-seconds">00</strong>
+          <small>Seconds</small>
+        </div>
+
+      </div>
+
+      <p class="birthday-status" id="her-status">
+        Counting down to her special day 💕
+      </p>
+
+    </div>
+
+    <!-- HIM -->
+
+    <div class="birthday-card him">
+
+      <div class="birthday-icon">🎂</div>
+
+      <h3>His Birthday</h3>
+
+      <p class="birthday-date">
+        November 22 · Your Special Day 💙
+      </p>
+
+      <div class="birthday-time">
+
+        <div>
+          <strong id="him-days">000</strong>
+          <small>Days</small>
+        </div>
+
+        <div>
+          <strong id="him-hours">00</strong>
+          <small>Hours</small>
+        </div>
+
+        <div>
+          <strong id="him-minutes">00</strong>
+          <small>Minutes</small>
+        </div>
+
+        <div>
+          <strong id="him-seconds">00</strong>
+          <small>Seconds</small>
+        </div>
+
+      </div>
+
+      <p class="birthday-status" id="him-status">
+        Counting down to his special day 🎉
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- WISHES -->
+
 <section id="wishes">
+
   <h2 class="section-title">For our next chapter</h2>
-  <p class="subtitle">A few things I wish for us.</p>
+
+  <p class="subtitle">
+    A few things I wish for us.
+  </p>
 
   <div class="wishes">
 
@@ -471,36 +733,60 @@ footer span {color:var(--pink)}
   </div>
 </section>
 
+<!-- PROMISE -->
+
 <section>
+
   <div class="promise">
+
     <div class="heart">💗</div>
-    <h2>One year down.<br>Our story continues.</h2>
+
+    <h2>
+      One year down.<br>
+      Our story continues.
+    </h2>
+
     <p>
       Dear Melat, if you ever wonder whether you matter
       to me, come back to this page.
       Remember that someone is grateful that
       November 1, 2025 happened.
     </p>
+
     <br>
+
     <p style="color:#ff9bb5;font-family:'Playfair Display',serif;font-size:21px">
       I love our little universe, Baby.
     </p>
+
   </div>
+
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
+
   Made with love, a little madness, and a lot of feelings.<br>
+
   For <span>Melat Hussein</span> ♥<br>
+
   <span>November 1, 2025 — Always & Beyond</span>
+
 </footer>
 
 <script>
+
+// ANNIVERSARY COUNTER
+
 const start = new Date(2025, 10, 1, 23, 0, 0);
 
 function updateCounter() {
+
   const now = new Date();
+
   let diff = Math.max(0, now - start);
 
   const days = Math.floor(diff / 86400000);
@@ -510,6 +796,7 @@ function updateCounter() {
   diff %= 3600000;
 
   const minutes = Math.floor(diff / 60000);
+
   const seconds = Math.floor((diff % 60000) / 1000);
 
   document.getElementById('days').textContent =
@@ -523,26 +810,142 @@ function updateCounter() {
 
   document.getElementById('seconds').textContent =
     String(seconds).padStart(2, '0');
+
 }
 
-updateCounter();
-setInterval(updateCounter, 1000);
+
+// BIRTHDAY COUNTDOWNS
+
+function updateBirthday(prefix, month, day, name) {
+
+  const now = new Date();
+
+  let year = now.getFullYear();
+
+  // Birthday date for this year
+  let target = new Date(
+    year, month - 1, day, 0, 0, 0
+  );
+
+  const status = document.getElementById(prefix + '-status');
+
+  // Birthday is today
+  if (
+    now.getMonth() === month - 1 &&
+    now.getDate() === day
+  ) {
+
+    ['days', 'hours', 'minutes', 'seconds'].forEach(unit => {
+
+      document.getElementById(prefix + '-' + unit).textContent =
+        unit === 'days' ? '000' : '00';
+
+    });
+
+    status.textContent =
+      '🎉 Happy Birthday, ' + name + '! ❤️';
+
+    return;
+  }
+
+  // Move to next year if this year's birthday has passed
+  if (target <= now) {
+
+    target = new Date(
+      year + 1, month - 1, day, 0, 0, 0
+    );
+
+  }
+
+  const diff = target.getTime() - now.getTime();
+
+  const days = Math.floor(diff / 86400000);
+
+  const hours = Math.floor(
+    (diff % 86400000) / 3600000
+  );
+
+  const minutes = Math.floor(
+    (diff % 3600000) / 60000
+  );
+
+  const seconds = Math.floor(
+    (diff % 60000) / 1000
+  );
+
+  document.getElementById(prefix + '-days').textContent =
+    String(days).padStart(3, '0');
+
+  document.getElementById(prefix + '-hours').textContent =
+    String(hours).padStart(2, '0');
+
+  document.getElementById(prefix + '-minutes').textContent =
+    String(minutes).padStart(2, '0');
+
+  document.getElementById(prefix + '-seconds').textContent =
+    String(seconds).padStart(2, '0');
+
+  status.textContent =
+    'Getting closer to ' + name + '\'s day 💕';
+
+}
+
+
+// UPDATE BOTH BIRTHDAYS
+
+function updateBirthdays() {
+
+  // May 27: Her
+  updateBirthday('her', 5, 27, 'Melat');
+
+  // November 22: Him
+  updateBirthday('him', 11, 22, 'Your');
+
+}
+
+
+// FLOATING HEARTS
 
 function createHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'floating-heart';
-  heart.textContent = Math.random() > .5 ? '♥' : '♡';
 
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.fontSize = (12 + Math.random() * 17) + 'px';
-  heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+  const heart = document.createElement('div');
+
+  heart.className = 'floating-heart';
+
+  heart.textContent =
+    Math.random() > .5 ? '♥' : '♡';
+
+  heart.style.left =
+    Math.random() * 100 + 'vw';
+
+  heart.style.fontSize =
+    (12 + Math.random() * 17) + 'px';
+
+  heart.style.animationDuration =
+    (5 + Math.random() * 5) + 's';
 
   document.body.appendChild(heart);
 
   setTimeout(() => heart.remove(), 10000);
+
 }
 
+
+// START EVERYTHING
+
+function updateAll() {
+
+  updateCounter();
+  updateBirthdays();
+
+}
+
+updateAll();
+
+setInterval(updateAll, 1000);
+
 setInterval(createHeart, 1100);
+
 </script>
 
 </body>
